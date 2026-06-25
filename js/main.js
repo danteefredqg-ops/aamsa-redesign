@@ -40,4 +40,30 @@ document.addEventListener('DOMContentLoaded', () => {
       header.style.boxShadow = window.scrollY > 10 ? '0 8px 20px rgba(0,0,0,.35)' : 'none';
     });
   }
+
+  // Formulario de cotización → mailto
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nombre  = form.querySelector('[type="text"]')?.value.trim()  || '';
+      const correo  = form.querySelector('[type="email"]')?.value.trim() || '';
+      const tel     = form.querySelector('[type="tel"]')?.value.trim()   || '';
+      const asunto  = form.querySelectorAll('[type="text"]')[1]?.value.trim() || '';
+      const mensaje = form.querySelector('textarea')?.value.trim()       || '';
+
+      const cuerpo =
+        `Nombre: ${nombre}\n` +
+        `Correo: ${correo}\n` +
+        `Teléfono: ${tel}\n\n` +
+        `Mensaje:\n${mensaje}`;
+
+      const asuntoFinal = asunto || 'Solicitud de cotización — AAMSA';
+
+      window.location.href =
+        'mailto:ventas@aamsa.com' +
+        '?subject=' + encodeURIComponent(asuntoFinal) +
+        '&body='    + encodeURIComponent(cuerpo);
+    });
+  });
 });
