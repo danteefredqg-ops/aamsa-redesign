@@ -41,6 +41,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Parallax suave en hero
+  const heroBg = document.querySelector('.hero .hero-bg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      heroBg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+    }, { passive: true });
+  }
+
+  // Contadores animados en stat strip
+  function animateValue(el, from, to, duration, prefix, suffix, decimals) {
+    const t0 = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - t0) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const v = from + (to - from) * eased;
+      el.textContent = prefix + (decimals ? v.toFixed(decimals) : Math.round(v)) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  const statStrip = document.querySelector('.stat-strip');
+  if (statStrip) {
+    let counted = false;
+    new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !counted) {
+        counted = true;
+        const nums = statStrip.querySelectorAll('.stat .num');
+        if (nums[0]) animateValue(nums[0], 0,    45,   1800, '+', '',  0);
+        if (nums[1]) animateValue(nums[1], 1990, 1997,  1400, '',  '',  0);
+        if (nums[3]) animateValue(nums[3], 0,    4.4,  1600, '',  '★', 1);
+      }
+    }, { threshold: 0.6 }).observe(statStrip);
+  }
+
   // Formulario de cotización → mailto
   document.querySelectorAll('form').forEach(form => {
     form.addEventListener('submit', function (e) {
