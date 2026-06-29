@@ -10,7 +10,6 @@
   --charcoal-soft: #1E2329;
   --steel: #3A4248;
   --surface: #F4F5F6;
-  --surface-2: #E8EAEC;
   --ink: #15181B;
   --ink-soft: #565E64;
   --orange: #EA6A20;
@@ -434,15 +433,10 @@ section{ padding: 96px 0; }
 footer.site{
   background: var(--ink);
   color: rgba(255,255,255,.55);
-  padding: 36px 0;
+  padding: 0;
   font-family: var(--font-mono);
   font-size: 12.5px;
 }
-footer.site .row{
-  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
-}
-footer.site a{ color: rgba(255,255,255,.75); }
-footer.site a:hover{ color: var(--orange); }
 
 /* ===== WhatsApp float (done right: small, doesn't block content) ===== */
 .wa-float{
@@ -598,7 +592,6 @@ footer.site a:hover{ color: var(--orange); }
 .industry-tags span:hover{ border-color: var(--orange); color: var(--orange); }
 
 /* ===== Footer rico ===== */
-footer.site{ padding: 0; }
 .footer-main{
   display:grid;
   grid-template-columns: 1.8fr 1fr 1.4fr 1fr;
