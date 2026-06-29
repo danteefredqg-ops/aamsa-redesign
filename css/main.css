@@ -522,12 +522,12 @@ footer.site{
   gap:16px;
 }
 .related-card{
-  background:var(--white);
-  border:1px solid var(--line-dark);
+  background: var(--charcoal-soft);
+  border: 1px solid var(--line);
   padding: 20px;
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
-.related-card:hover{ transform: translateY(-3px); box-shadow:0 14px 28px rgba(20,24,28,.1); }
+.related-card:hover{ transform: translateY(-3px); box-shadow: 0 14px 28px rgba(0,0,0,.35); border-color: var(--orange); }
 .related-card .eyebrow{ font-size:11px; }
 .related-card h4{ font-size:18px; margin:8px 0 6px; font-family:var(--font-display); text-transform:uppercase; }
 .related-card a{ font-family:var(--font-mono); font-size:12px; color:var(--orange); font-weight:600; }
@@ -586,10 +586,7 @@ footer.site{
   color: rgba(255,255,255,.5);
   border: 1px solid rgba(255,255,255,.14);
   padding: 5px 13px;
-  cursor: default;
-  transition: border-color .2s, color .2s;
 }
-.industry-tags span:hover{ border-color: var(--orange); color: var(--orange); }
 
 /* ===== Footer rico ===== */
 .footer-main{
